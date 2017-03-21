@@ -1,0 +1,13 @@
+{
+  "name": "debug-logi",
+  "version": "0.0.0",
+  "description": "A minimalist debug-logger for node",
+  "main": "index.js",
+  "scripts": {
+    "test": "node example"
+  },
+  "repository": "laggingreflex/debug-logi",
+  "dependencies": {
+    "debug-logger": "^0.4.1"
+  }
+}
