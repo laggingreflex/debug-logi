@@ -4,6 +4,8 @@ const modErr = require('./err')
 
 module.exports = createLogger
 
+let debugEnabledStr = '';
+
 function createLogger(namespace, config) {
   if (typeof namespace === 'object') {
     config = namespace
@@ -17,7 +19,7 @@ function createLogger(namespace, config) {
     colors: config.noColors ? false : config.colors,
   }
 
-  debugLogger.debug.enable(Object.entries({
+  debugEnabledStr += (debugEnabledStr ? ',' : '') + Object.entries({
     log: true,
     error: true,
     warn: true,
@@ -27,7 +29,9 @@ function createLogger(namespace, config) {
     silly: config.verbose >= 3,
     trace: config.verbose >= 3,
     '*': config.verbose >= 3,
-  }).filter(([, v]) => v).map(([l]) => l).map(e => namespace + ':' + e).join(','));
+  }).filter(([, v]) => v).map(([l]) => l).map(e => namespace + ':' + e).join(',');
+
+  debugLogger.debug.enable(debugEnabledStr);
 
   const logger = debugLogger(namespace)
 
