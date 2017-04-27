@@ -31,11 +31,4 @@ add('info', 2);
 add('silly', 0);
 add('trace', 0);
 
-levels.inf = levels.info;
-levels.wrn = levels.warn;
-levels.sil = levels.silly;
-levels.verb = levels.verbose;
-levels.vrb = levels.verbose;
-levels.err = levels.error;
-
 module.exports = levels;
